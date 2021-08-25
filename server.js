@@ -25,28 +25,25 @@ app.get("/api/notes", function(req,res) {
     });
 });
 
-app.post("/api/notes", function (req, res) {
-    let note = String.fromCharCode(65 + Math.floor(Math.random() * 26));
-    let id = note + Date.now();
-    let newNote = {
-      id: id,
-      title: req.body.title,
-      text: req.body.text,
-    };
-    console.log(typeof notes);
-    notes.push(newNote);
-    const stringifyNote = JSON.stringify(notes);
-    res.json(notes);
-    fs.writeFile("db/db.json", stringifyNote, (err) => {
-      if (err) console.log(err);
-      else {
-        console.log("Note saved to db.json");
-      }
-    });
-  });
-
-  app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/index.html"));
+app.post("/api/notes", function(req, res) {
+    try {
+      notesData = fs.readFileSync("./Develop/db/db.json", "utf8");
+      console.log(notesData);
+  
+      notesData = JSON.parse(notesData);
+      req.body.id = notesData.length;
+  
+      notesData.push(req.body);
+      notesData = JSON.stringify(notesData);
+      fs.writeFile("./db/db.json", notesData, "utf8", function(err) {
+          if (err) throw err;
+      });
+      res.json(JSON.parse(notesData));
+  
+    } catch (err) {
+      throw err;
+      console.error(err);
+    }
   });
 
 app.listen(PORT, function () {
