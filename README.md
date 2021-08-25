@@ -13,9 +13,9 @@ then a Save icon appears in the navigation at the top of the page.
 - When the user clicks on the Write icon in the navigation at the top of the page, then they are presented with empty fields to enter a new note title and the note’s text in the right-hand column.
 
 # Note Taking Preview 
-> Preview ![Note Taker](Assets/Work_Day_Scheduler_Prev.png) N 
+> Preview ![Note Taker](Assets/Note.Taker.png) 
 
 ## Repository & Webpage:
 - URL: https://mgmedrano.github.io/Note_Taker/
 - GitHub Repository: https://github.com/mgmedrano/Note_Taker
-- Heroku :
+- Heroku :https://secret-chamber-96430.herokuapp.com/
